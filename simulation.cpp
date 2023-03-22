@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 struct Process
@@ -121,12 +123,13 @@ void findAvgTime(Process p[], int numOfPs)
 
 int main()
 {
+    srand(time(0));
     Process p[] = { 
-        {"p0", 0, 5},
-        {"p1", 3, 1},
-        {"p2", 2, 4},
-        {"p3", 5, 10},
-        {"p4", 9, 2}
+        {"p0", (rand() % 21 ), 5 + (rand() % 25)},
+        {"p1", (rand() % 21 ), 5 + (rand() % 25)},
+        {"p2", (rand() % 21 ), 5 + (rand() % 25)},
+        {"p3", (rand() % 21 ), 5 + (rand() % 25)},
+        {"p4", (rand() % 21 ), 5 + (rand() % 25)}
     };
 
     int numOfPs = sizeof(p) / sizeof(p[0]);
