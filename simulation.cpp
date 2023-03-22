@@ -92,7 +92,7 @@ void findAvgTime(Process p[], int numOfPs)
 {
     int wt[numOfPs];
     int tat[numOfPs];
-    int totalWT = 0;
+    int totalCPU = 0;
     int totalTAT = 0;
 
     //find wt for all processes
@@ -101,34 +101,32 @@ void findAvgTime(Process p[], int numOfPs)
     findTAT(p, numOfPs, wt, tat);
 
     cout << " pID\t\t" 
-        << "BT\t\t"
-        << "WT\t\t"
-        <<"TAT\t\t\n";
+        << "Ai\t\t"
+        << "Ti\t\t\n";
 
     //calculate total wt and total tat
     for(int i = 0; i < numOfPs; i++)
     {
-        totalWT = totalWT + wt[i];
+        totalCPU = totalCPU + p[i].t;
         totalTAT = totalTAT + tat[i];
         cout << " " << p[i].processID << "\t\t"
-            << p[i].t << "\t\t " << wt[i] << "\t\t "
-            << tat[i] << endl; 
+            << p[i].a << "\t\t" << p[i].t << "\t\t " << endl; 
     }
 
-    cout << "\nAverage waiting time = " 
-        << (float)totalWT / (float)numOfPs;
-    cout << "\nAverage turn around time = " 
+    cout << "\nAverage total CPU time = " 
+        << (float)totalCPU / (float)numOfPs;
+    cout << "\nAverage turn around time (ATT) = " 
         << (float)totalTAT / (float)numOfPs << endl;
 }
 
 int main()
 {
     Process p[] = { 
-        {"p1", 0, 5},
-        {"p2", 3, 1},
-        {"p3", 2, 4},
-        {"p4", 5, 10},
-        {"p5", 9, 2}
+        {"p0", 0, 5},
+        {"p1", 3, 1},
+        {"p2", 2, 4},
+        {"p3", 5, 10},
+        {"p4", 9, 2}
     };
 
     int numOfPs = sizeof(p) / sizeof(p[0]);
